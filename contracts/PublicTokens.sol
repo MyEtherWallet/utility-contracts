@@ -15,9 +15,9 @@ contract PublicTokens is Seriality{
         bytes32 email; // support email of the token
         bool isValid; //whether the token is valid or not
     }
-    mapping(uint => Token) public pubTokens
-    mapping(address => bool) public moderator
-    mapping(address => uint) public idMap
+    mapping(uint => Token) public pubTokens;
+    mapping(address => bool) public moderator;
+    mapping(address => uint) public idMap;
     modifier owner_only() {
         require(owner == msg.sender);
         _;
@@ -30,11 +30,11 @@ contract PublicTokens is Seriality{
         require(addr != 0x0);
         _;
     }
-    function PublicTokens () {
+    function PublicTokens () public {
     	owner = msg.sender;
     }
     function addModerator(address addr) public owner_only {
-    	moderator[addr] == true;
+    	moderator[addr] = true;
     }
     function removeModerator(address addr) public owner_only {
     	moderator[addr] = false;
@@ -50,7 +50,7 @@ contract PublicTokens is Seriality{
     	if(token.addr == 0x0) {
     		tokenCount++;
         	tokenValidCount++;
-    		token = pubTokens[tokenCount]
+    		token = pubTokens[tokenCount];
     		idMap[addr] = tokenCount;
     		token.isValid = true;
     	}
@@ -64,25 +64,25 @@ contract PublicTokens is Seriality{
     function disableToken(address addr) public only_mod no_null(addr) {
     	Token storage token = pubTokens[idMap[addr]];
     	if(token.addr == addr) {
-    		token.isValid = false
+    		token.isValid = false;
     		tokenValidCount--;
     	}
     }
     function enableToken(address addr) public only_mod no_null(addr) {
     	Token storage token = pubTokens[idMap[addr]];
     	if(token.addr == addr) {
-    		token.isValid = false
+    		token.isValid = false;
     		tokenValidCount++;
     	}
     }
     function getToken(address addr) public view returns (
-    	bytes16 name, 
-    	bytes16 symbol, 
-    	address addr, 
-    	uint8 decimals, 
-    	bytes32 website, 
-    	bytes32 email) {
-    	Token view token =  pubTokens[idMap[addr]];
+    	bytes16, 
+    	bytes16, 
+    	address, 
+    	uint8, 
+    	bytes32, 
+    	bytes32) {
+    	Token memory token =  pubTokens[idMap[addr]];
         return (
         	token.name,
         	token.symbol,
@@ -92,10 +92,10 @@ contract PublicTokens is Seriality{
         	token.email);
     }
     function getAllBalance(address _owner, bool name, bool website, bool email) public view returns (bytes) {
-    	uint memory bufferSize = 32; //assign 32 bytes to set the total number of tokens
-    	bufferSize += 3 //set name, website, email
+    	uint bufferSize = 32; //assign 32 bytes to set the total number of tokens
+    	bufferSize += 3; //set name, website, email
     	for(uint i=1; i<=tokenCount; i++){
-    		Token view token = pubTokens[i]
+    		Token memory token = pubTokens[i];
     		if(token.isValid){
     			if(name) bufferSize+=16;
     			if(website) bufferSize+=32;
@@ -110,14 +110,14 @@ contract PublicTokens is Seriality{
     	boolToBytes(offset, name, result); offset -= 1;
     	boolToBytes(offset, website, result); offset -= 1;
     	boolToBytes(offset, email, result); offset -= 1;
-    	for(uint i=1; i<=tokenCount; i++){
-    		Token view token = pubTokens[i]
+    	for(i=1; i<=tokenCount; i++){
+    		token = pubTokens[i];
     		BasicToken basicToken = BasicToken(token.addr);
     		if(token.isValid){
     			bytes16ToBytes(offset, token.symbol, result); offset -= 16;
     			addressToBytes(offset, token.addr, result); offset -= 20;
     			uintToBytes(offset, token.decimals, result); offset -= 8;
-    			uintToBytes(offset, basicToken.balanceOf(_owner), result) offset -= 32;
+    			uintToBytes(offset, basicToken.balanceOf(_owner), result); offset -= 32;
     			if(name){
     				bytes16ToBytes(offset, token.name, result); offset -= 16;
     			}
