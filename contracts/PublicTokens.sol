@@ -75,6 +75,14 @@ contract PublicTokens is Seriality{
     		tokenValidCount++;
     	}
     }
+    function test(bytes16 name, 
+    	bytes16 symbol, 
+    	address addr, 
+    	uint8 decimals, 
+    	bytes32 website, 
+    	bytes32 email) public {
+    	
+    }
     function getToken(address addr) public view returns (
     	bytes16, 
     	bytes16, 

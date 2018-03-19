@@ -15,21 +15,37 @@ module.exports = function(deployer, network, accounts) {
         ]).then(function() {
             return [DT1.deployed(), DT2.deployed(), DT3.deployed()]
         }).then(function(dTokens) {
-        	console.log(web3.fromAscii("Dummy Token 1", 16))
-            return pt.addSetToken(
-            	web3.fromAscii("Dummy Token 1", 16), 
-            	web3.fromAscii("DT1", 16), 
-            	dTokens[0].address, 
-            	5, 
-            	web3.fromAscii("http://www.dtoken1.eth", 32), 
-            	web3.fromAscii("support@dtoken1.eth", 32))
-            /*    .then(function() {
-                	        	console.log(web3.fromAscii("Dummy Token 1", 16))
-                    return pt.addSetToken(web3.fromAscii("Dummy Token 1", 16), web3.fromAscii("DT1", 16), dTokens[0].address, 5, web3.fromAscii("http://www.dtoken1.eth", 32), web3.fromAscii("support@dtoken1.eth", 32))
-                })
-                .then(function() {
-                    return pt.addSetToken(web3.fromAscii("Dummy Token 1", 16), web3.fromAscii("DT1", 16), dTokens[0].address, 5, web3.fromAscii("http://www.dtoken1.eth", 32), web3.fromAscii("support@dtoken1.eth", 32))
-                }) */
+            return [dTokens[0].then(function(dt0) {
+                return pt.addSetToken(
+                    "Dummy Token 0",
+                    "DT0",
+                    dt0.address,
+                    5,
+                    "http://www.dtoken0.eth",
+                    "support@dtoken0.eth", {
+                        from: accounts[0]
+                    })
+            }), dTokens[1].then(function(dt1) {
+                return pt.addSetToken(
+                    "Dummy Token 1",
+                    "DT1",
+                    dt1.address,
+                    6,
+                    "http://www.dtoken1.eth",
+                    "support@dtoken1.eth", {
+                        from: accounts[0]
+                    })
+            }), dTokens[2].then(function(dt2) {
+                return pt.addSetToken(
+                    "Dummy Token 2",
+                    "DT2",
+                    dt2.address,
+                    7,
+                    "http://www.dtoken2.eth",
+                    "support@dtoken2.eth", {
+                        from: accounts[0]
+                    })
+            })]
         })
     })
 };
