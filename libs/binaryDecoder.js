@@ -1,0 +1,24 @@
+var sizeHex = (bytes) => {
+        return bytes * 2;
+    }
+    /*module.exports = {
+        decode: (hex) => {
+            hex = hex.substring(0, 2) == '0x' ? hex.substring(2) : hex;
+            console.log(hex)
+            var offset = hex.length;
+            offset -= 32*2;
+            //console.log(hex.substring(offset, 64))
+           // hex = hex.match(/.{2}/g).reverse().join("");
+          //  var hCountTokens = 
+            //var buf = new Buffer(, 'hex')
+
+           // console.log(buf.toString('hex'))
+        }
+    }*/
+
+var hex = "737570706f72744064746f6b656e322e65746800000000000000000000000000737570706f72744064746f6b656e322e65746800000000000000000000000020687474703a2f2f7777772e64746f6b656e322e65746800000000000000000020000000000000000000000000000000000000000000000006e42c3ab010f8c25279647f05c6c728c26820692800000000000000000000000000000000737570706f72744064746f6b656e312e65746800000000000000000000000000737570706f72744064746f6b656e312e65746800000000000000000000000020687474703a2f2f7777772e64746f6b656e312e6574680000000000000000002000000000000000000001c6bf526340000000000000000005e53a3bac98c9d304a3bb6ce34ed37923bc25117a000000000000000000000000000000000101010000000000000000000000000000000000000000000000000000000000000002"
+var offset = hex.length
+offset -= sizeHex(32)
+var countTokens = hex.substr(offset, sizeHex(32)) offset -= sizeHex(1)
+var isName = hex.substr(offset,sizeHex(1)) offset -= sizeHex(1)
+var 

@@ -1,7 +1,6 @@
 pragma solidity ^0.4.0;
-import "./BasicToken.sol";
-contract DummyToken is BasicToken {
-    function BasicToken(address addr) public {
+contract DummyToken {
+    function DummyToken(address addr) public {
         balances[addr] = 500000000000000;
     }
     function transfer(address _to, uint256 _value) public returns (bool success) {

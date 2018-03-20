@@ -1,6 +1,6 @@
 pragma solidity ^0.4.0;
 import "./Seriality/Seriality.sol";
-import "./BasicToken.sol";
+import "./DummyToken.sol";
 
 contract PublicTokens is Seriality{
 	uint public tokenCount = 0; //total count of all added tokens
@@ -75,14 +75,6 @@ contract PublicTokens is Seriality{
     		tokenValidCount++;
     	}
     }
-    function test(bytes16 name, 
-    	bytes16 symbol, 
-    	address addr, 
-    	uint8 decimals, 
-    	bytes32 website, 
-    	bytes32 email) public {
-    	
-    }
     function getToken(address addr) public view returns (
     	bytes16, 
     	bytes16, 
@@ -91,6 +83,22 @@ contract PublicTokens is Seriality{
     	bytes32, 
     	bytes32) {
     	Token memory token =  pubTokens[idMap[addr]];
+        return (
+        	token.name,
+        	token.symbol,
+        	token.addr,
+        	token.decimals,
+        	token.website,
+        	token.email);
+    }
+    function getTokenById(uint id) public view returns (
+    	bytes16, 
+    	bytes16, 
+    	address, 
+    	uint8, 
+    	bytes32, 
+    	bytes32) {
+    	Token memory token =  pubTokens[id];
         return (
         	token.name,
         	token.symbol,
@@ -120,7 +128,7 @@ contract PublicTokens is Seriality{
     	boolToBytes(offset, email, result); offset -= 1;
     	for(i=1; i<=tokenCount; i++){
     		token = pubTokens[i];
-    		BasicToken basicToken = BasicToken(token.addr);
+    		DummyToken basicToken = DummyToken(token.addr);
     		if(token.isValid){
     			bytes16ToBytes(offset, token.symbol, result); offset -= 16;
     			addressToBytes(offset, token.addr, result); offset -= 20;
@@ -137,5 +145,6 @@ contract PublicTokens is Seriality{
     			}
     		}
     	}
+    	return result;
     }
 }
