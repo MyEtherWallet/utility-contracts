@@ -83,7 +83,10 @@ contract('PublicTokens', function(accounts) {
     });
     it("should get correct encoded string", async function() {
         var allBalance = await pt.getAllBalance(accounts[1], true, true, true)
-        console.log(allBalance)
-        console.log(bd.decode(allBalance))
+        var tokens = bd.decode(allBalance)
+        assert.equal(tokens.length, 2)
+        assert.equal(tokens[0].balance, 500000000000000)
+        assert.equal(tokens[0].symbol, 'DT1')
+        assert.equal(tokens[1].balance, 0)
     });
 })

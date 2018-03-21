@@ -39,7 +39,7 @@ contract TypesToBytes {
                 jumpi(loop , lt(index,size))
         }
     }
-    function bytes32ToBytes(uint _offst, bytes32 _input, bytes memory _output) internal pure {
+    function bytes32ToBytes(uint _offst, bytes32 _input, bytes memory _output) internal  {
 
         assembly {
             mstore(add(_output, _offst), _input)
