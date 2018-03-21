@@ -17,14 +17,28 @@ contract TypesToBytes {
             mstore(add(_output, _offst), _input)
         }
     }
-
-    function bytes16ToBytes(uint _offst, bytes16 _input, bytes memory _output) internal pure {
+    function bytes16ToBytesR(uint _offst, bytes16 _input, bytes memory _output) internal {
 
         assembly {
-            mstore(add(_output, _offst), _input)
+            let index := 0
+            let size := 16
+            loop:
+                mstore8(add(add(_output, _offst),add(16, index)), byte(index, _input))
+                index := add(index ,1)
+                jumpi(loop , lt(index,size))
         }
     }
+    function bytes32ToBytesR(uint _offst, bytes32 _input, bytes memory _output) internal {
 
+        assembly {
+            let index := 0
+            let size := 32
+            loop:
+                mstore8(add(add(_output, _offst),index), byte(index, _input))
+                index := add(index ,1)
+                jumpi(loop , lt(index,size))
+        }
+    }
     function bytes32ToBytes(uint _offst, bytes32 _input, bytes memory _output) internal pure {
 
         assembly {

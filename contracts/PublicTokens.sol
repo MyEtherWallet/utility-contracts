@@ -130,18 +130,18 @@ contract PublicTokens is Seriality{
     		token = pubTokens[i];
     		DummyToken basicToken = DummyToken(token.addr);
     		if(token.isValid){
-    			bytes16ToBytes(offset, token.symbol, result); offset -= 16;
+    			bytes16ToBytesR(offset, token.symbol, result); offset -= 16;
     			addressToBytes(offset, token.addr, result); offset -= 20;
     			uintToBytes(offset, token.decimals, result); offset -= 8;
     			uintToBytes(offset, basicToken.balanceOf(_owner), result); offset -= 32;
     			if(name){
-    				bytes16ToBytes(offset, token.name, result); offset -= 16;
+    				bytes16ToBytesR(offset, token.name, result); offset -= 16;
     			}
     			if(website) {
-    				bytes32ToBytes(offset, token.website, result); offset -= 32;
+    				bytes32ToBytesR(offset, token.website, result); offset -= 32;
     			}
     			if(email) {
-    				bytes32ToBytes(offset, token.email, result); offset -= 32;
+    				bytes32ToBytesR(offset, token.email, result); offset -= 32;
     			}
     		}
     	}

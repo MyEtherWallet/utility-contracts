@@ -3,6 +3,7 @@ var DummyToken = artifacts.require("DummyToken")
 var Web3 = require('web3')
 var web3 = new Web3()
 var bd = require('../libs/binaryDecoder.js')
+
 function trim(str) {
     return str.replace(/\0[\s\S]*$/g, '')
 }
@@ -33,6 +34,7 @@ contract('PublicTokens', function(accounts) {
             "support@dtoken1.eth", {
                 from: accounts[0]
             })
+        console.log(dt1.address)
         await pt.addSetToken(
             "Dummy Token 2",
             "DT2",
@@ -81,6 +83,7 @@ contract('PublicTokens', function(accounts) {
     });
     it("should get correct encoded string", async function() {
         var allBalance = await pt.getAllBalance(accounts[1], true, true, true)
+        console.log(allBalance)
         console.log(bd.decode(allBalance))
     });
 })
