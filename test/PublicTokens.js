@@ -7,6 +7,9 @@ var bd = require('../libs/binaryDecoder.js')
 function trim(str) {
     return str.replace(/\0[\s\S]*$/g, '')
 }
+var getHex = (str) => {
+    return '0x' + Buffer.from(str, 'utf8').toString('hex')
+}
 contract('PublicTokens', function(accounts) {
     var pt = null
     var dt1 = null
@@ -26,12 +29,12 @@ contract('PublicTokens', function(accounts) {
     })
     it('should add token contracts', async function() {
         await pt.addSetToken(
-            "Dummy Token 1",
-            "DT1",
+            getHex("Dummy Token 1"),
+            getHex("DT1"),
             dt1.address,
             5,
-            "http://www.dtoken1.eth",
-            "support@dtoken1.eth", {
+            getHex("http://www.dtoken1.eth"),
+            getHex("support@dtoken1.eth"), {
                 from: accounts[0]
             })
         console.log(dt1.address)

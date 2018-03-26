@@ -4,48 +4,34 @@ var PublicTokens = artifacts.require("PublicTokens")
 var DT1 = artifacts.require("DummyToken")
 var DT2 = artifacts.require("DummyToken")
 var DT3 = artifacts.require("DummyToken")
+var ethTokens = require("../tokens/tokens-eth.json")
+var getHex = (str) => {
+    return '0x' + Buffer.from(str, 'utf8').toString('hex')
+}
 module.exports = function(deployer, network, accounts) {
-    deployer.deploy(PublicTokens).then(function() {
-        return PublicTokens.deployed();
-    }).then(function(pt) {
-        return deployer.deploy([
-            [DT1, accounts[0]],
-            [DT2, accounts[1]],
-            [DT3, accounts[2]]
-        ]).then(function() {
-            return [DT1.deployed(), DT2.deployed(), DT3.deployed()]
-        }).then(function(dTokens) {
-            return [dTokens[0].then(function(dt0) {
-                return pt.addSetToken(
-                    "Dummy Token 0",
-                    "DT0",
-                    dt0.address,
-                    5,
-                    "http://www.dtoken0.eth",
-                    "support@dtoken0.eth", {
-                        from: accounts[0]
-                    })
-            }), dTokens[1].then(function(dt1) {
-                return pt.addSetToken(
-                    "Dummy Token 1",
-                    "DT1",
-                    dt1.address,
-                    6,
-                    "http://www.dtoken1.eth",
-                    "support@dtoken1.eth", {
-                        from: accounts[0]
-                    })
-            }), dTokens[2].then(function(dt2) {
-                return pt.addSetToken(
-                    "Dummy Token 2",
-                    "DT2",
-                    dt2.address,
-                    7,
-                    "http://www.dtoken2.eth",
-                    "support@dtoken2.eth", {
-                        from: accounts[0]
-                    })
-            })]
+    if (network == 'development') {
+        deployer.deploy(PublicTokens).then(function() {
+            return PublicTokens.deployed();
+        }).then(function(pt) {
+            return deployer.deploy([
+                [DT1, accounts[0]],
+                [DT2, accounts[1]],
+                [DT3, accounts[2]]
+            ]).then(function() {
+                return [DT1.deployed(), DT2.deployed(), DT3.deployed()]
+            }).then(function(dTokens) {})
         })
-    })
+    } else if(network == 'live'){
+        deployer.deploy(PublicTokens).then(function() {
+            return PublicTokens.deployed({gas:"0x7a120"})
+        }).then(function(pt) {
+            ethTokens.forEach(async(_token) => {
+                try {
+                    await pt.addSetToken(getHex(_token.name.substr(0, 16)), getHex(_token.symbol), _token.address, _token.decimals, getHex(_token.website), getHex(_token.support.email), {gas:"0x2bf20"})
+                } catch (e) {
+                    console.log(_token)
+                }
+            })
+        })
+    }
 };
