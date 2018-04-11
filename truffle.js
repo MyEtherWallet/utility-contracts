@@ -10,7 +10,7 @@ module.exports = {
       host: "127.0.0.1",
       port: 8545,
       network_id: "*", // Match any network id
-      gasPrice: "0x12a05f200"
+      gasPrice: "0x3b9aca00"
     }
   }
 };

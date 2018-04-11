@@ -27,9 +27,9 @@ module.exports = function(deployer, network, accounts) {
         }).then(function(pt) {
             ethTokens.forEach(async(_token) => {
                 try {
-                    await pt.addSetToken(getHex(_token.name.substr(0, 16)), getHex(_token.symbol), _token.address, _token.decimals, getHex(_token.website), getHex(_token.support.email), {gas:"0x2bf20"})
+                    await pt.addSetToken(getHex(_token.name.substr(0, 16)), getHex(_token.symbol), _token.address, _token.decimals, getHex(_token.website), getHex(_token.support.email), {gas:"0x493e0"})
                 } catch (e) {
-                    console.log(_token)
+                    console.log(_token, e)
                 }
             })
         })
