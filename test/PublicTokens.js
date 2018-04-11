@@ -85,7 +85,7 @@ contract('PublicTokens', function(accounts) {
         assert.equal(balance2.toNumber(), 500000000000000)
     });
     it("should get correct encoded string", async function() {
-        var allBalance = await pt.getAllBalance(accounts[1], true, true, true)
+        var allBalance = await pt.getAllBalance(accounts[1], true, true, true, 0)
         var tokens = bd.decode(allBalance)
         assert.equal(tokens.length, 2)
         assert.equal(tokens[0].balance, 500000000000000)

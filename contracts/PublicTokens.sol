@@ -107,12 +107,15 @@ contract PublicTokens is Seriality{
         	token.website,
         	token.email);
     }
-    function getAllBalance(address _owner, bool name, bool website, bool email) public view returns (bytes) {
-    	uint bufferSize = 32; //assign 32 bytes to set the total number of tokens
+    function getAllBalance(address _owner, bool name, bool website, bool email, uint count) public view returns (bytes) {
+    	if(count == 0) count = tokenCount;
+        uint bufferSize = 33; //assign 32 bytes to set the total number of tokens + define start
     	bufferSize += 3; //set name, website, email
-    	for(uint i=1; i<=tokenCount; i++){
+        uint validCounter = 0;
+    	for(uint i=1; i<=count; i++){
     		Token memory token = pubTokens[i];
     		if(token.isValid){
+                validCounter++;
     			if(name) bufferSize+=16;
     			if(website) bufferSize+=32;
     			if(email) bufferSize+=32;
@@ -122,18 +125,20 @@ contract PublicTokens is Seriality{
     	bytes memory result = new bytes(bufferSize);
     	uint offset = bufferSize;
     	//serialize
-    	uintToBytes(offset, tokenValidCount, result); offset -= 32;
+        boolToBytes(offset, true, result); offset -= 1;
+    	uintToBytes(offset, validCounter, result); offset -= 32;
     	boolToBytes(offset, name, result); offset -= 1;
     	boolToBytes(offset, website, result); offset -= 1;
     	boolToBytes(offset, email, result); offset -= 1;
-    	for(i=1; i<=tokenCount; i++){
+    	for(i=1; i<=count; i++){
     		token = pubTokens[i];
     		DummyToken basicToken = DummyToken(token.addr);
     		if(token.isValid){
     			bytes16ToBytesR(offset, token.symbol, result); offset -= 16;
     			addressToBytes(offset, token.addr, result); offset -= 20;
     			uintToBytes(offset, token.decimals, result); offset -= 8;
-    			uintToBytes(offset, basicToken.balanceOf(_owner), result); offset -= 32;
+                uint256 balance = basicToken.balanceOf(_owner);
+    			uintToBytes(offset, balance, result); offset -= 32;
     			if(name){
     				bytes16ToBytesR(offset, token.name, result); offset -= 16;
     			}
