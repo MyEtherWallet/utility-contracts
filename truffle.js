@@ -11,6 +11,12 @@ module.exports = {
       port: 8545,
       network_id: "*", // Match any network id
       gasPrice: "0x3b9aca00"
+    },
+    ropsten: {
+      host: "https://api.myetherapi.com/rop",
+      port: 443,
+      network_id: "*", // Match any network id
+      gasPrice: "0x3b9aca00"
     }
   }
 };
