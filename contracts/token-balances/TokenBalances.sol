@@ -29,7 +29,7 @@ contract TokenBalances is Seriality{
     function getToken(uint id) internal view returns (Token token) {
         (token.name, token.symbol, token.addr, token.decimals, token.website, token.email, token.isValid) = pubT.pubTokens(id);
     }
-    function getTokenBalance(address tokenAddr, address addr) internal view returns (uint bal) {
+    function getTokenBalance(address tokenAddr, address addr) public view returns (uint bal) {
         bytes4 sig = bytes4(keccak256("balanceOf(address)"));
         assembly {
             // move pointer to free memory spot
