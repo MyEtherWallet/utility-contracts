@@ -5,6 +5,7 @@ smart contracts which can be used as utility contracts to interact with the bloc
 ### Mainnet deployment
 
 > PublicTokens: `0xBE1ecF8e340F13071761e0EeF054d9A511e1Cb56`
+
 > TokenBalances: `0xdAFf2b3BdC710EB33A847CCb30A24789c0Ef9c5b`
 
 ### Example to read all token balances
