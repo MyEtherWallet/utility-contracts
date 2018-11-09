@@ -1,0 +1,35 @@
+{
+  "name": "@myetherwallet/eth-token-balance",
+  "version": "0.1.0",
+  "description": "Get token balances of an eth address",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src --out-dir dist"
+  },
+  "files": [
+    "dist/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MyEtherWallet/utility-contracts/tree/master/packages/eth-token-balance"
+  },
+  "keywords": [
+    "ethereum",
+    "myetherwallet",
+    "erc20",
+    "tokens",
+    "balance"
+  ],
+  "author": "kvhnuke & #teamMEW",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "bignumber.js": "^8.0.1",
+    "web3": "^1.0.0-beta.36"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5"
+  }
+}
