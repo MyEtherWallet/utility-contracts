@@ -8,6 +8,12 @@ smart contracts which can be used as utility contracts to interact with the bloc
 
 > TokenBalances: `0xdAFf2b3BdC710EB33A847CCb30A24789c0Ef9c5b`
 
+### Ropsten deployment
+
+> PublicTokens: `0xf166098CBA584b3Ebf9B5014Dca4009E89F4485d`
+
+> TokenBalances: `0xB8E1Bbc50FD87Ea00D8ce73747Ac6F516aF26dAC`
+
 ### Example to read all token balances
 
 ```
