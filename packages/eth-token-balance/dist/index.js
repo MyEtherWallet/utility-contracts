@@ -48,7 +48,8 @@ class TokenBalance {
       this.tokenPromise.then(() => {
         this.tokenContract.methods.getAllBalance(address, name, website, email, count).call().then(res => {
           resolve((0, _binaryDecoder.default)(res));
-        });
+        }).catch(reject);
+        ;
       }).catch(reject);
     });
   }
