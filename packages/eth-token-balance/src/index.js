@@ -33,7 +33,7 @@ class TokenBalance {
             .call()
             .then(res => {
               resolve(decode(res));
-            });
+            }).catch(reject);;
         })
         .catch(reject);
     });
