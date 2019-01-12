@@ -76,7 +76,7 @@ contract PublicTokens {
     function enableToken(address addr) public only_mod no_null(addr) {
         Token storage token = pubTokens[idMap[addr]];
         if(token.addr == addr) {
-            token.isValid = false;
+            token.isValid = true;
             tokenValidCount++;
     	}
     }
