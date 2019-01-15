@@ -44,6 +44,14 @@ contract PublicTokens {
     function removeModerator(address addr) public owner_only {
         moderator[addr] = false;
     }
+    function loadTokensFromContract(address addr, uint from, uint amount) public owner_only{
+        PublicTokens pubT = PublicTokens(addr);
+        for(uint i = from; i < (from+amount); i++ ){
+            Token memory token;
+            (token.name, token.symbol, token.addr, token.decimals, token.website, token.email, token.isValid) = pubT.pubTokens(i);
+            addSetToken(token.name, token.symbol, token.addr, token.decimals, token.website, token.email);
+        }
+    }
     function addSetToken(
         bytes16 name, 
         bytes16 symbol, 

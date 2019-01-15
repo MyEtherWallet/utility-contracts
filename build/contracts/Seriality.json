@@ -8,24 +8,24 @@
       "type": "constructor"
     }
   ],
-  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a72305820cfa78bdc10e506b676618ba53af2e7ebf3c4e810002d38768fd9c0043561f03b0029",
-  "deployedBytecode": "0x6080604052600080fd00a165627a7a72305820cfa78bdc10e506b676618ba53af2e7ebf3c4e810002d38768fd9c0043561f03b0029",
-  "sourceMap": "290:102:5:-;;;354:36;8:9:-1;5:2;;;30:1;27;20:12;5:2;354:36:5;290:102;;;;;;",
-  "deployedSourceMap": "290:102:5:-;;;;;",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a723058206bcbbb8bc4177b27a8e3a6963bc1244b0d06104890a170d67530d64a7dcb60e90029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a723058206bcbbb8bc4177b27a8e3a6963bc1244b0d06104890a170d67530d64a7dcb60e90029",
+  "sourceMap": "290:102:3:-;;;354:36;8:9:-1;5:2;;;30:1;27;20:12;5:2;354:36:3;290:102;;;;;;",
+  "deployedSourceMap": "290:102:3:-;;;;;",
   "source": "pragma solidity ^0.4.16;\n\n/**\n * @title Seriality\n * @dev The Seriality contract is the main interface for serializing data using the TypeToBytes, BytesToType and SizeOf\n * @author pouladzade@gmail.com\n */\n \nimport \"./BytesToTypes.sol\";\nimport \"./TypesToBytes.sol\";\nimport \"./SizeOf.sol\";\n\ncontract Seriality is BytesToTypes, TypesToBytes, SizeOf {\n\n    function Seriality() public {\n\n    }\n}\n",
   "sourcePath": "/home/kvhnuke/GitHub/utility-contracts/contracts/token-balances/Seriality/Seriality.sol",
   "ast": {
     "absolutePath": "/home/kvhnuke/GitHub/utility-contracts/contracts/token-balances/Seriality/Seriality.sol",
     "exportedSymbols": {
       "Seriality": [
-        1333
+        1328
       ]
     },
-    "id": 1334,
+    "id": 1329,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1319,
+        "id": 1314,
         "literals": [
           "solidity",
           "^",
@@ -33,38 +33,38 @@
           ".16"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:5"
+        "src": "0:24:3"
       },
       {
         "absolutePath": "/home/kvhnuke/GitHub/utility-contracts/contracts/token-balances/Seriality/BytesToTypes.sol",
         "file": "./BytesToTypes.sol",
-        "id": 1320,
+        "id": 1315,
         "nodeType": "ImportDirective",
-        "scope": 1334,
-        "sourceUnit": 1318,
-        "src": "208:28:5",
+        "scope": 1329,
+        "sourceUnit": 1313,
+        "src": "208:28:3",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "/home/kvhnuke/GitHub/utility-contracts/contracts/token-balances/Seriality/TypesToBytes.sol",
         "file": "./TypesToBytes.sol",
-        "id": 1321,
+        "id": 1316,
         "nodeType": "ImportDirective",
-        "scope": 1334,
-        "sourceUnit": 1531,
-        "src": "237:28:5",
+        "scope": 1329,
+        "sourceUnit": 1526,
+        "src": "237:28:3",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "/home/kvhnuke/GitHub/utility-contracts/contracts/token-balances/Seriality/SizeOf.sol",
         "file": "./SizeOf.sol",
-        "id": 1322,
+        "id": 1317,
         "nodeType": "ImportDirective",
-        "scope": 1334,
-        "sourceUnit": 1410,
-        "src": "266:22:5",
+        "scope": 1329,
+        "sourceUnit": 1405,
+        "src": "266:22:3",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -74,84 +74,84 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1323,
+              "id": 1318,
               "name": "BytesToTypes",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1317,
-              "src": "312:12:5",
+              "referencedDeclaration": 1312,
+              "src": "312:12:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_BytesToTypes_$1317",
+                "typeIdentifier": "t_contract$_BytesToTypes_$1312",
                 "typeString": "contract BytesToTypes"
               }
             },
-            "id": 1324,
+            "id": 1319,
             "nodeType": "InheritanceSpecifier",
-            "src": "312:12:5"
+            "src": "312:12:3"
           },
           {
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1325,
+              "id": 1320,
               "name": "TypesToBytes",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1530,
-              "src": "326:12:5",
+              "referencedDeclaration": 1525,
+              "src": "326:12:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TypesToBytes_$1530",
+                "typeIdentifier": "t_contract$_TypesToBytes_$1525",
                 "typeString": "contract TypesToBytes"
               }
             },
-            "id": 1326,
+            "id": 1321,
             "nodeType": "InheritanceSpecifier",
-            "src": "326:12:5"
+            "src": "326:12:3"
           },
           {
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1327,
+              "id": 1322,
               "name": "SizeOf",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1409,
-              "src": "340:6:5",
+              "referencedDeclaration": 1404,
+              "src": "340:6:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_SizeOf_$1409",
+                "typeIdentifier": "t_contract$_SizeOf_$1404",
                 "typeString": "contract SizeOf"
               }
             },
-            "id": 1328,
+            "id": 1323,
             "nodeType": "InheritanceSpecifier",
-            "src": "340:6:5"
+            "src": "340:6:3"
           }
         ],
         "contractDependencies": [
-          1317,
-          1409,
-          1530
+          1312,
+          1404,
+          1525
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1333,
+        "id": 1328,
         "linearizedBaseContracts": [
-          1333,
-          1409,
-          1530,
-          1317
+          1328,
+          1404,
+          1525,
+          1312
         ],
         "name": "Seriality",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 1331,
+              "id": 1326,
               "nodeType": "Block",
-              "src": "382:8:5",
+              "src": "382:8:3",
               "statements": []
             },
             "documentation": null,
-            "id": 1332,
+            "id": 1327,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -159,43 +159,43 @@
             "name": "Seriality",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1329,
+              "id": 1324,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "372:2:5"
+              "src": "372:2:3"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1330,
+              "id": 1325,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "382:0:5"
+              "src": "382:0:3"
             },
-            "scope": 1333,
-            "src": "354:36:5",
+            "scope": 1328,
+            "src": "354:36:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1334,
-        "src": "290:102:5"
+        "scope": 1329,
+        "src": "290:102:3"
       }
     ],
-    "src": "0:393:5"
+    "src": "0:393:3"
   },
   "legacyAST": {
     "absolutePath": "/home/kvhnuke/GitHub/utility-contracts/contracts/token-balances/Seriality/Seriality.sol",
     "exportedSymbols": {
       "Seriality": [
-        1333
+        1328
       ]
     },
-    "id": 1334,
+    "id": 1329,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1319,
+        "id": 1314,
         "literals": [
           "solidity",
           "^",
@@ -203,38 +203,38 @@
           ".16"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:5"
+        "src": "0:24:3"
       },
       {
         "absolutePath": "/home/kvhnuke/GitHub/utility-contracts/contracts/token-balances/Seriality/BytesToTypes.sol",
         "file": "./BytesToTypes.sol",
-        "id": 1320,
+        "id": 1315,
         "nodeType": "ImportDirective",
-        "scope": 1334,
-        "sourceUnit": 1318,
-        "src": "208:28:5",
+        "scope": 1329,
+        "sourceUnit": 1313,
+        "src": "208:28:3",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "/home/kvhnuke/GitHub/utility-contracts/contracts/token-balances/Seriality/TypesToBytes.sol",
         "file": "./TypesToBytes.sol",
-        "id": 1321,
+        "id": 1316,
         "nodeType": "ImportDirective",
-        "scope": 1334,
-        "sourceUnit": 1531,
-        "src": "237:28:5",
+        "scope": 1329,
+        "sourceUnit": 1526,
+        "src": "237:28:3",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "/home/kvhnuke/GitHub/utility-contracts/contracts/token-balances/Seriality/SizeOf.sol",
         "file": "./SizeOf.sol",
-        "id": 1322,
+        "id": 1317,
         "nodeType": "ImportDirective",
-        "scope": 1334,
-        "sourceUnit": 1410,
-        "src": "266:22:5",
+        "scope": 1329,
+        "sourceUnit": 1405,
+        "src": "266:22:3",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -244,84 +244,84 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1323,
+              "id": 1318,
               "name": "BytesToTypes",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1317,
-              "src": "312:12:5",
+              "referencedDeclaration": 1312,
+              "src": "312:12:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_BytesToTypes_$1317",
+                "typeIdentifier": "t_contract$_BytesToTypes_$1312",
                 "typeString": "contract BytesToTypes"
               }
             },
-            "id": 1324,
+            "id": 1319,
             "nodeType": "InheritanceSpecifier",
-            "src": "312:12:5"
+            "src": "312:12:3"
           },
           {
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1325,
+              "id": 1320,
               "name": "TypesToBytes",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1530,
-              "src": "326:12:5",
+              "referencedDeclaration": 1525,
+              "src": "326:12:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TypesToBytes_$1530",
+                "typeIdentifier": "t_contract$_TypesToBytes_$1525",
                 "typeString": "contract TypesToBytes"
               }
             },
-            "id": 1326,
+            "id": 1321,
             "nodeType": "InheritanceSpecifier",
-            "src": "326:12:5"
+            "src": "326:12:3"
           },
           {
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1327,
+              "id": 1322,
               "name": "SizeOf",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1409,
-              "src": "340:6:5",
+              "referencedDeclaration": 1404,
+              "src": "340:6:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_SizeOf_$1409",
+                "typeIdentifier": "t_contract$_SizeOf_$1404",
                 "typeString": "contract SizeOf"
               }
             },
-            "id": 1328,
+            "id": 1323,
             "nodeType": "InheritanceSpecifier",
-            "src": "340:6:5"
+            "src": "340:6:3"
           }
         ],
         "contractDependencies": [
-          1317,
-          1409,
-          1530
+          1312,
+          1404,
+          1525
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1333,
+        "id": 1328,
         "linearizedBaseContracts": [
-          1333,
-          1409,
-          1530,
-          1317
+          1328,
+          1404,
+          1525,
+          1312
         ],
         "name": "Seriality",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 1331,
+              "id": 1326,
               "nodeType": "Block",
-              "src": "382:8:5",
+              "src": "382:8:3",
               "statements": []
             },
             "documentation": null,
-            "id": 1332,
+            "id": 1327,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -329,36 +329,36 @@
             "name": "Seriality",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1329,
+              "id": 1324,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "372:2:5"
+              "src": "372:2:3"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1330,
+              "id": 1325,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "382:0:5"
+              "src": "382:0:3"
             },
-            "scope": 1333,
-            "src": "354:36:5",
+            "scope": 1328,
+            "src": "354:36:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1334,
-        "src": "290:102:5"
+        "scope": 1329,
+        "src": "290:102:3"
       }
     ],
-    "src": "0:393:5"
+    "src": "0:393:3"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+    "version": "0.4.25+commit.59dbf8f1.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "2.0.1",
-  "updatedAt": "2018-09-25T05:36:18.874Z"
+  "schemaVersion": "2.0.2",
+  "updatedAt": "2019-01-15T06:18:11.372Z"
 }
