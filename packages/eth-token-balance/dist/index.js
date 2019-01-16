@@ -15,7 +15,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var contractAddress = {
   // Mainnet
-  "1": "0xdAFf2b3BdC710EB33A847CCb30A24789c0Ef9c5b",
+  "1": "0x2783c0A4Bfd3721961653a9e9939Fc63687bf07f",
   "3": "0xB8E1Bbc50FD87Ea00D8ce73747Ac6F516aF26dAC"
 };
 
@@ -49,7 +49,6 @@ class TokenBalance {
         this.tokenContract.methods.getAllBalance(address, name, website, email, count).call().then(res => {
           resolve((0, _binaryDecoder.default)(res));
         }).catch(reject);
-        ;
       }).catch(reject);
     });
   }

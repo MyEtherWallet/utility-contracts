@@ -3,7 +3,7 @@ import abi from "./abi";
 import Web3 from "web3";
 var contractAddress = {
   // Mainnet
-  "1": "0xdAFf2b3BdC710EB33A847CCb30A24789c0Ef9c5b",
+  "1": "0x2783c0A4Bfd3721961653a9e9939Fc63687bf07f",
   "3": "0xB8E1Bbc50FD87Ea00D8ce73747Ac6F516aF26dAC"
 };
 
@@ -33,7 +33,8 @@ class TokenBalance {
             .call()
             .then(res => {
               resolve(decode(res));
-            }).catch(reject);;
+            })
+            .catch(reject);
         })
         .catch(reject);
     });
