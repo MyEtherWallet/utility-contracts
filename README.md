@@ -4,9 +4,9 @@ smart contracts which can be used as utility contracts to interact with the bloc
 
 ### Mainnet deployment
 
-> PublicTokens: `0xBE1ecF8e340F13071761e0EeF054d9A511e1Cb56`
+> PublicTokens: `0x202549FCF4Cc855ACA456c39A839c4f202Ee5Cef`
 
-> TokenBalances: `0xdAFf2b3BdC710EB33A847CCb30A24789c0Ef9c5b`
+> TokenBalances: `0x2783c0A4Bfd3721961653a9e9939Fc63687bf07f`
 
 ### Ropsten deployment
 
