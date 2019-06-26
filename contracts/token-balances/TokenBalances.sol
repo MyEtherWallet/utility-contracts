@@ -1,5 +1,5 @@
 pragma solidity ^0.4.24;
-import "./Seriality/Seriality.sol";
+import "../Seriality/Seriality.sol";
 import "./PublicTokens.sol";
 import "./DummyToken.sol";
 contract TokenBalances is Seriality{
