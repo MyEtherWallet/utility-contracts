@@ -80,6 +80,7 @@ contract NFTBalances is Seriality{
     }
     function getTokenBalances(address[] memory _tokenAddresses, address _owner) public view returns (bytes memory) {
         uint bufferSize = 33; //define start + Data length
+        bufferSize += 32; //to save the itemcount
         uint[] memory tokenBalances = new uint[](_tokenAddresses.length);
         for(uint i = 0; i < _tokenAddresses.length; i++){
             tokenBalances[i] = getTokenBalance(_tokenAddresses[i], _owner);
@@ -91,6 +92,8 @@ contract NFTBalances is Seriality{
     	//serialize
         boolToBytes(offset, true, result); 
         offset -= 1;
+        uintToBytes(offset, _tokenAddresses.length, result); 
+        offset -= 32;
         for(i = 0; i < _tokenAddresses.length; i++){
             uint8 numBytes = getByteSize(tokenBalances[i]);
             uintToBytes(offset, numBytes, result); 
@@ -102,10 +105,11 @@ contract NFTBalances is Seriality{
     }
     function getOwnedTokens(address _tokenAddress, address _owner, uint idxOffset, uint count) public view only_contract(_tokenAddress) returns (bytes memory) {
         uint bufferSize = 33; //define start + Data length
+        bufferSize += 32; //to save the itemcount
         uint tokenBalance = getTokenBalance(_tokenAddress, _owner);
         uint itemCount = count;
         if((idxOffset+count)> tokenBalance) {
-            itemCount =  (idxOffset+count) - tokenBalance;
+            itemCount =  tokenBalance - idxOffset;
         }
         uint[] memory ownedTokens = new uint[](itemCount);
         for(uint i = 0; i < itemCount; i++){
@@ -118,6 +122,8 @@ contract NFTBalances is Seriality{
     	//serialize
         boolToBytes(offset, true, result); 
         offset -= 1;
+        uintToBytes(offset, itemCount, result); 
+        offset -= 32;
         for(i = 0; i < itemCount; i++){
             uint8 numBytes = getByteSize(ownedTokens[i]);
             uintToBytes(offset, numBytes, result); 
