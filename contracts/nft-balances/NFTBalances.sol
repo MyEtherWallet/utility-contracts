@@ -78,12 +78,38 @@ contract NFTBalances is Seriality{
         if(bitpos % 8 == 0) return (bitpos/8);
         else return (bitpos/8)+1;
     }
-    function getOwnedTokens(address _tokenAddress, address _owner) public view only_contract(_tokenAddress) returns (bytes memory) {
+    function getTokenBalances(address[] memory _tokenAddresses, address _owner) public view returns (bytes memory) {
+        uint bufferSize = 33; //define start + Data length
+        uint[] memory tokenBalances = new uint[](_tokenAddresses.length);
+        for(uint i = 0; i < _tokenAddresses.length; i++){
+            tokenBalances[i] = getTokenBalance(_tokenAddresses[i], _owner);
+            bufferSize += 1; //save the bytesize
+            bufferSize += getByteSize(tokenBalances[i]);
+        }
+        bytes memory result = new bytes(bufferSize);
+        uint offset = bufferSize;
+    	//serialize
+        boolToBytes(offset, true, result); 
+        offset -= 1;
+        for(i = 0; i < _tokenAddresses.length; i++){
+            uint8 numBytes = getByteSize(tokenBalances[i]);
+            uintToBytes(offset, numBytes, result); 
+            offset -= 1;
+            uintToBytes(offset, tokenBalances[i], result); 
+            offset -= numBytes;
+        }
+        return result;
+    }
+    function getOwnedTokens(address _tokenAddress, address _owner, uint idxOffset, uint count) public view only_contract(_tokenAddress) returns (bytes memory) {
         uint bufferSize = 33; //define start + Data length
         uint tokenBalance = getTokenBalance(_tokenAddress, _owner);
-        uint[] memory ownedTokens = new uint[](tokenBalance);
-        for(uint i = 0; i < tokenBalance; i++){
-            ownedTokens[i] = tokenOfOwnerByIndex(_tokenAddress, _owner, i);
+        uint itemCount = count;
+        if((idxOffset+count)> tokenBalance) {
+            itemCount =  (idxOffset+count) - tokenBalance;
+        }
+        uint[] memory ownedTokens = new uint[](itemCount);
+        for(uint i = 0; i < itemCount; i++){
+            ownedTokens[i] = tokenOfOwnerByIndex(_tokenAddress, _owner, i+idxOffset);
             bufferSize += 1; //save the bytesize
             bufferSize += getByteSize(ownedTokens[i]);
         }
@@ -92,7 +118,7 @@ contract NFTBalances is Seriality{
     	//serialize
         boolToBytes(offset, true, result); 
         offset -= 1;
-        for(i = 0; i < tokenBalance; i++){
+        for(i = 0; i < itemCount; i++){
             uint8 numBytes = getByteSize(ownedTokens[i]);
             uintToBytes(offset, numBytes, result); 
             offset -= 1;
