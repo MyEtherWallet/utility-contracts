@@ -24,13 +24,20 @@ class TokenBalance {
       });
     });
   }
-  getBalance(address, name = true, website = true, email = true, count = 0) {
+  getBalance(
+    address,
+    name = true,
+    website = true,
+    email = true,
+    count = 0,
+    extraParams = {}
+  ) {
     return new Promise((resolve, reject) => {
       this.tokenPromise
         .then(() => {
           this.tokenContract.methods
             .getAllBalance(address, name, website, email, count)
-            .call()
+            .call(extraParams)
             .then(res => {
               resolve(decode(res));
             })

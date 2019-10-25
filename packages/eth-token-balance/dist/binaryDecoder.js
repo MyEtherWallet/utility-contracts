@@ -5,15 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-require("core-js/modules/es6.regexp.replace");
-
 var _bignumber = _interopRequireDefault(require("bignumber.js"));
 
 var _web = _interopRequireDefault(require("web3"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var sizeHex = bytes => {
+var sizeHex = function sizeHex(bytes) {
   return bytes * 2;
 };
 
@@ -26,7 +24,7 @@ function getAscii(hex) {
   return trim(_web.default.utils.toAscii(hex));
 }
 
-var _default = hex => {
+var _default = function _default(hex) {
   var tokens = [];
   hex = hex.substring(0, 2) == "0x" ? hex.substring(2) : hex;
   hex = hex.substring(0, hex.lastIndexOf("1") - 1); //starting point
