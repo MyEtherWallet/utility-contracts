@@ -3,13 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _bignumber = _interopRequireDefault(require("bignumber.js"));
 
 var _web = _interopRequireDefault(require("web3"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var sizeHex = function sizeHex(bytes) {
   return bytes * 2;
@@ -21,7 +21,7 @@ function trim(str) {
 
 function getAscii(hex) {
   hex = hex.substring(0, 2) == "0x" ? hex : "0x" + hex;
-  return trim(_web.default.utils.toAscii(hex));
+  return trim(_web["default"].utils.toAscii(hex));
 }
 
 var _default = function _default(hex) {
@@ -38,7 +38,7 @@ var _default = function _default(hex) {
   var isWebSite = parseInt(hex.substr(offset, sizeHex(1)));
   offset -= sizeHex(1);
   var isEmail = parseInt(hex.substr(offset, sizeHex(1)));
-  var numTokens = new _bignumber.default("0x" + countTokens).toNumber();
+  var numTokens = new _bignumber["default"]("0x" + countTokens).toNumber();
 
   for (var i = 0; i < numTokens; i++) {
     var token = {};
@@ -47,9 +47,9 @@ var _default = function _default(hex) {
     offset -= sizeHex(20);
     token.addr = "0x" + hex.substr(offset, sizeHex(20));
     offset -= sizeHex(1);
-    token.decimals = new _bignumber.default("0x" + hex.substr(offset, sizeHex(1))).toNumber();
+    token.decimals = new _bignumber["default"]("0x" + hex.substr(offset, sizeHex(1))).toNumber();
     offset -= sizeHex(32);
-    token.balance = new _bignumber.default("0x" + hex.substr(offset, sizeHex(32))).toFixed();
+    token.balance = new _bignumber["default"]("0x" + hex.substr(offset, sizeHex(32))).toFixed();
 
     if (isName) {
       offset -= sizeHex(16);
@@ -72,4 +72,4 @@ var _default = function _default(hex) {
   return tokens;
 };
 
-exports.default = _default;
+exports["default"] = _default;

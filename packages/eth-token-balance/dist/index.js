@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _binaryDecoder = _interopRequireDefault(require("./binaryDecoder"));
 
@@ -11,7 +11,7 @@ var _abi = _interopRequireDefault(require("./abi"));
 
 var _web = _interopRequireDefault(require("web3"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -37,8 +37,8 @@ function () {
       ethProvider = ethProvider.currentProvider;
     }
 
-    this.web3 = new _web.default(ethProvider);
-    this.tokenContract = new this.web3.eth.Contract(_abi.default);
+    this.web3 = new _web["default"](ethProvider);
+    this.tokenContract = new this.web3.eth.Contract(_abi["default"]);
     this.tokenPromise = new Promise(function (resolve, reject) {
       _this.web3.eth.net.getId().then(function (version) {
         if (!contractAddress[version]) {
@@ -60,12 +60,13 @@ function () {
       var website = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
       var email = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
       var count = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+      var extraParams = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : {};
       return new Promise(function (resolve, reject) {
         _this2.tokenPromise.then(function () {
-          _this2.tokenContract.methods.getAllBalance(address, name, website, email, count).call().then(function (res) {
-            resolve((0, _binaryDecoder.default)(res));
-          }).catch(reject);
-        }).catch(reject);
+          _this2.tokenContract.methods.getAllBalance(address, name, website, email, count).call(extraParams).then(function (res) {
+            resolve((0, _binaryDecoder["default"])(res));
+          })["catch"](reject);
+        })["catch"](reject);
       });
     }
   }]);
@@ -74,4 +75,4 @@ function () {
 }();
 
 var _default = TokenBalance;
-exports.default = _default;
+exports["default"] = _default;
