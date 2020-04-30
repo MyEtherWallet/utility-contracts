@@ -1,6 +1,6 @@
 {
   "name": "@myetherwallet/eth-token-balance",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Get token balances of an eth address",
   "main": "dist/index.js",
   "scripts": {
