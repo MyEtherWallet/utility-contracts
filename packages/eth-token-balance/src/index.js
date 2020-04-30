@@ -4,7 +4,7 @@ import Web3 from "web3";
 var contractAddress = {
   // Mainnet
   "1": "0x73bedb6dd7fd3edd9928f55f6acc20877f2551eb",
-  "3": "0xB8E1Bbc50FD87Ea00D8ce73747Ac6F516aF26dAC",
+  "3": "0x936717fb92984c63f22AdB3E31d494b5471AeDc8",
 };
 
 class TokenBalance {
