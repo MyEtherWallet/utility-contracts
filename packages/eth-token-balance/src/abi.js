@@ -3,35 +3,35 @@ export default [
     constant: true,
     inputs: [
       {
+        internalType: "address",
         name: "_owner",
-        type: "address"
+        type: "address",
       },
       {
+        internalType: "bool",
         name: "name",
-        type: "bool"
+        type: "bool",
       },
       {
+        internalType: "bool",
         name: "website",
-        type: "bool"
+        type: "bool",
       },
       {
+        internalType: "bool",
         name: "email",
-        type: "bool"
+        type: "bool",
       },
-      {
-        name: "_count",
-        type: "uint256"
-      }
     ],
     name: "getAllBalance",
     outputs: [
       {
+        internalType: "bytes",
         name: "",
-        type: "bytes"
-      }
+        type: "bytes",
+      },
     ],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
-  }
+    stateMutability: "nonpayable",
+    type: "function",
+  },
 ];

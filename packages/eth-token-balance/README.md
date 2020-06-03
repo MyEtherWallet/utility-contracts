@@ -37,3 +37,11 @@ tb.getBalance("0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D").then(balances => {
     website: 'https://www.diviproject.org',
     email: 'support@diviproject.org' }, ...
 ```
+
+### Token Storage Contracts
+
+```
+mainnet: 0x202549FCF4Cc855ACA456c39A839c4f202Ee5Cef
+ropsten: 0xf166098CBA584b3Ebf9B5014Dca4009E89F4485d
+
+```

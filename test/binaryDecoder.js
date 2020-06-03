@@ -1,5 +1,5 @@
-import bn from "bignumber.js";
-import Web3 from "web3";
+const bn = require("bignumber.js");
+const Web3 = require("web3");
 var sizeHex = (bytes) => {
   return bytes * 2;
 };
@@ -12,7 +12,7 @@ function getAscii(hex) {
   hex = hex.substring(0, 2) == "0x" ? hex : "0x" + hex;
   return trim(Web3.utils.toAscii(hex));
 }
-export default (hex) => {
+module.exports = (hex) => {
   var tokens = [];
   hex = hex.substring(0, 2) == "0x" ? hex.substring(2) : hex;
   var offset = 0;
@@ -49,5 +49,6 @@ export default (hex) => {
     }
     tokens.push(token);
   }
+  console.log(tokens);
   return tokens;
 };

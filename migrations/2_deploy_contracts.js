@@ -7,36 +7,25 @@ var DT2 = artifacts.require("DummyToken");
 var DT3 = artifacts.require("DummyToken");
 var DC = artifacts.require("DummyContract");
 var ethTokens = require("../tokens/tokens-eth.json");
-var getHex = str => {
+var getHex = (str) => {
   return "0x" + Buffer.from(str, "utf8").toString("hex");
 };
-module.exports = function(deployer, network, accounts) {
+module.exports = async (deployer, network, accounts) => {
   if (network == "development") {
-    deployer
-      .deploy(PublicTokens)
-      .then(function() {
-        return PublicTokens.deployed();
-      })
-      .then(function(pt) {
-        return deployer
-          .deploy([[DT1, accounts[0]], [DT2, accounts[1]], [DT3, accounts[2]]])
-          .then(function() {
-            return [DT1.deployed(), DT2.deployed(), DT3.deployed()];
-          })
-          .then(function(dTokens) {
-            return deployer.deploy(TokenBalances, pt.address).then(function() {
-              return deployer.deploy(DC);
-            });
-          });
-      });
+    await deployer.deploy(PublicTokens);
+    const pt = await PublicTokens.deployed();
+    await deployer.deploy(DT1, accounts[0]);
+    await deployer.deploy(DT2, accounts[1]);
+    await deployer.deploy(DT3, accounts[2]);
+    await deployer.deploy(TokenBalances, pt.address);
   } else if (network == "live") {
     deployer
       .deploy(PublicTokens)
-      .then(function() {
+      .then(function () {
         return PublicTokens.deployed({ gas: "0x7a120" });
       })
-      .then(function(pt) {
-        ethTokens.forEach(async _token => {
+      .then(function (pt) {
+        ethTokens.forEach(async (_token) => {
           try {
             await pt.addSetToken(
               getHex(_token.name.substr(0, 16)),
@@ -52,17 +41,17 @@ module.exports = function(deployer, network, accounts) {
           }
         });
       })
-      .then(function() {
+      .then(function () {
         deployer.deploy(TokenBalances, pt.address);
       });
   } else if (network == "ropsten") {
     deployer
       .deploy(PublicTokens)
-      .then(function() {
+      .then(function () {
         return PublicTokens.deployed({ gas: "0x7a120" });
       })
-      .then(function(pt) {
-        ethTokens.forEach(async _token => {
+      .then(function (pt) {
+        ethTokens.forEach(async (_token) => {
           try {
             await pt.addSetToken(
               getHex(_token.name.substr(0, 16)),

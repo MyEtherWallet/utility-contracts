@@ -3,8 +3,8 @@ import abi from "./abi";
 import Web3 from "web3";
 var contractAddress = {
   // Mainnet
-  "1": "0x2783c0A4Bfd3721961653a9e9939Fc63687bf07f",
-  "3": "0xB8E1Bbc50FD87Ea00D8ce73747Ac6F516aF26dAC"
+  "1": "0x73bedb6dd7fd3edd9928f55f6acc20877f2551eb",
+  "3": "0x936717fb92984c63f22AdB3E31d494b5471AeDc8",
 };
 
 class TokenBalance {
@@ -15,7 +15,7 @@ class TokenBalance {
     this.web3 = new Web3(ethProvider);
     this.tokenContract = new this.web3.eth.Contract(abi);
     this.tokenPromise = new Promise((resolve, reject) => {
-      this.web3.eth.net.getId().then(version => {
+      this.web3.eth.net.getId().then((version) => {
         if (!contractAddress[version]) {
           return reject(new Error("Network not supported"));
         }
@@ -24,14 +24,20 @@ class TokenBalance {
       });
     });
   }
-  getBalance(address, name = true, website = true, email = true, count = 0) {
+  getBalance(
+    address,
+    name = true,
+    website = true,
+    email = true,
+    extraParams = {}
+  ) {
     return new Promise((resolve, reject) => {
       this.tokenPromise
         .then(() => {
           this.tokenContract.methods
-            .getAllBalance(address, name, website, email, count)
-            .call()
-            .then(res => {
+            .getAllBalance(address, name, website, email)
+            .call(extraParams)
+            .then((res) => {
               resolve(decode(res));
             })
             .catch(reject);

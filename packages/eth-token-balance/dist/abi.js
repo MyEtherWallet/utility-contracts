@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 var _default = [{
   constant: true,
   inputs: [{
@@ -31,4 +31,4 @@ var _default = [{
   stateMutability: "view",
   type: "function"
 }];
-exports.default = _default;
+exports["default"] = _default;
