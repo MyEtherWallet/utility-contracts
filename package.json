@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "bignumber.js": "^6.0.0",
-    "web3": "^0.20.6"
+    "web3": "^0.20.6",
+    "dotenv": "^5.0.1",
+    "ethereumjs-util": "^5.1.5"
   },
   "devDependencies": {},
   "scripts": {
