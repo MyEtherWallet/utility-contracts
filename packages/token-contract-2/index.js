@@ -31,7 +31,7 @@ async function getContractTokens() {
 
 async function differenceTokenList(arr) {;
   fs.writeFileSync("./notInContractTokens.json", JSON.stringify(arr));
-  // console.log(arr, arr.length)
+  // console.log(arr.length)
 	if(arr.length > 0) {
 		const contract = new web3.eth.Contract(abi, process.env.CONTRACT_ADDRESS);
 		const FROM = "0x" + ethUtil.privateToAddress("0x"+process.env.PRIV).toString("hex");
