@@ -35,7 +35,7 @@ async function differenceTokenList(arr) {;
 	if(arr.length > 0) {
 		const contract = new web3.eth.Contract(abi, process.env.CONTRACT_ADDRESS);
 		const FROM = "0x" + ethUtil.privateToAddress("0x"+process.env.PRIV).toString("hex");
-		for (let i = 0; i < arr.length; i++) {
+		for (let i = 20; i < 50; i++) {
 			let txCount = await web3.eth.getTransactionCount(FROM);
 			let name = arr[i].name.length > 7 ? web3.utils.utf8ToHex(arr[i].symbol) : web3.utils.utf8ToHex(arr[i].name);
 			let symbol = web3.utils.utf8ToHex(arr[i].symbol);
@@ -84,7 +84,6 @@ async function run() {
 		});
 
 		if (foundToken === undefined) {
-			console.error('found')
 			diffTokens.push(mewTokes);
 		}
 	})
